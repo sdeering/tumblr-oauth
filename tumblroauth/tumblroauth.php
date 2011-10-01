@@ -23,17 +23,12 @@ class TumblrOAuth {
   public $timeout = 30;
   /* Set connect timeout. */
   public $connecttimeout = 30; 
-<<<<<<< HEAD
-=======
   /* Verify SSL Cert. */
   public $ssl_verifypeer = FALSE;
   /* Respons format. */
   public $format = 'json';
->>>>>>> parent of 1418637... tumblroauth.php changes
   /* Decode returned json data. */
   public $decode_json = TRUE;
- /* Decode json to associative array. */
-  public $json_assoc = FALSE;
   /* Contains the last HTTP headers returned. */
   public $http_info;
   /* Set the useragnet. */
@@ -149,13 +144,8 @@ class TumblrOAuth {
    */
   function get($url, $parameters = array()) {
     $response = $this->oAuthRequest($url, 'GET', $parameters);
-<<<<<<< HEAD
-    if ($this->decode_json) {
-      return json_decode($response,$this->json_assoc);
-=======
     if ($this->format === 'json' && $this->decode_json) {
       return json_decode($response);
->>>>>>> parent of 1418637... tumblroauth.php changes
     }
     return $response;
   }
@@ -163,15 +153,10 @@ class TumblrOAuth {
   /**
    * POST wrapper for oAuthRequest.
    */
-  function post($url, $parameters = array()){
+  function post($url, $parameters = array()) {
     $response = $this->oAuthRequest($url, 'POST', $parameters);
-<<<<<<< HEAD
-    if ($this->decode_json) {
-      return json_decode($response,$this->json_assoc);
-=======
     if ($this->format === 'json' && $this->decode_json) {
       return json_decode($response);
->>>>>>> parent of 1418637... tumblroauth.php changes
     }
     return $response;
   }
@@ -181,13 +166,8 @@ class TumblrOAuth {
    */
   function delete($url, $parameters = array()) {
     $response = $this->oAuthRequest($url, 'DELETE', $parameters);
-<<<<<<< HEAD
-    if ($this->decode_json) {
-      return json_decode($response,$this->json_assoc);
-=======
     if ($this->format === 'json' && $this->decode_json) {
       return json_decode($response);
->>>>>>> parent of 1418637... tumblroauth.php changes
     }
     return $response;
   }
