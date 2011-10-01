@@ -42,10 +42,10 @@ class TumblrOAuth {
   /**
    * Set API URLS
    */
-  function accessTokenURL()  { return 'https://api.tumblr.com/oauth/access_token'; }
-  function authenticateURL() { return 'https://api.tumblr.com/oauth/authenticate'; }
-  function authorizeURL()    { return 'https://api.tumblr.com/oauth/authorize'; }
-  function requestTokenURL() { return 'https://api.tumblr.com/oauth/request_token'; }
+  function accessTokenURL()  { return 'http://www.tumblr.com/oauth/access_token'; }
+  function authenticateURL() { return 'http://www.tumblr.com/oauth/authorize'; }
+  function authorizeURL()    { return 'http://www.tumblr.com/oauth/authorize'; }
+  function requestTokenURL() { return 'http://www.tumblr.com/oauth/request_token'; }
 
   /**
    * Debug helpers
