@@ -3,22 +3,22 @@
 /*
  * Abraham Williams (abraham@abrah.am) http://abrah.am
  *
- * The first PHP Library to support OAuth for Twitter's REST API.
+ * The first PHP Library to support OAuth for Tumblr's REST API.
  */
 
 /* Load OAuth lib. You can find it at http://oauth.net */
 require_once('OAuth.php');
 
 /**
- * Twitter OAuth class
+ * Tumblr OAuth class
  */
-class TwitterOAuth {
+class TumblrOAuth {
   /* Contains the last HTTP status code returned. */
   public $http_code;
   /* Contains the last API call. */
   public $url;
   /* Set up the API root URL. */
-  public $host = "https://api.twitter.com/1/";
+  public $host = "https://api.tumblr.com/1/";
   /* Set timeout default. */
   public $timeout = 30;
   /* Set connect timeout. */
@@ -32,7 +32,7 @@ class TwitterOAuth {
   /* Contains the last HTTP headers returned. */
   public $http_info;
   /* Set the useragnet. */
-  public $useragent = 'TwitterOAuth v0.2.0-beta2';
+  public $useragent = 'TumblrOAuth v0.2.0-beta2';
   /* Immediately retry the API call if the response was not successful. */
   //public $retry = TRUE;
 
@@ -42,10 +42,10 @@ class TwitterOAuth {
   /**
    * Set API URLS
    */
-  function accessTokenURL()  { return 'https://api.twitter.com/oauth/access_token'; }
-  function authenticateURL() { return 'https://api.twitter.com/oauth/authenticate'; }
-  function authorizeURL()    { return 'https://api.twitter.com/oauth/authorize'; }
-  function requestTokenURL() { return 'https://api.twitter.com/oauth/request_token'; }
+  function accessTokenURL()  { return 'https://api.tumblr.com/oauth/access_token'; }
+  function authenticateURL() { return 'https://api.tumblr.com/oauth/authenticate'; }
+  function authorizeURL()    { return 'https://api.tumblr.com/oauth/authorize'; }
+  function requestTokenURL() { return 'https://api.tumblr.com/oauth/request_token'; }
 
   /**
    * Debug helpers
@@ -54,7 +54,7 @@ class TwitterOAuth {
   function lastAPICall() { return $this->last_api_call; }
 
   /**
-   * construct TwitterOAuth object
+   * construct TumblrOAuth object
    */
   function __construct($consumer_key, $consumer_secret, $oauth_token = NULL, $oauth_token_secret = NULL) {
     $this->sha1_method = new OAuthSignatureMethod_HMAC_SHA1();
@@ -68,7 +68,7 @@ class TwitterOAuth {
 
 
   /**
-   * Get a request_token from Twitter
+   * Get a request_token from Tumblr
    *
    * @returns a key/value array containing oauth_token and oauth_token_secret
    */
@@ -88,11 +88,11 @@ class TwitterOAuth {
    *
    * @returns a string
    */
-  function getAuthorizeURL($token, $sign_in_with_twitter = TRUE) {
+  function getAuthorizeURL($token, $sign_in_with_tumblr = TRUE) {
     if (is_array($token)) {
       $token = $token['oauth_token'];
     }
-    if (empty($sign_in_with_twitter)) {
+    if (empty($sign_in_with_tumblr)) {
       return $this->authorizeURL() . "?oauth_token={$token}";
     } else {
        return $this->authenticateURL() . "?oauth_token={$token}";

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * Take the user when they return from Twitter. Get access tokens.
- * Verify credentials and redirect to based on response from Twitter.
+ * Take the user when they return from Tumblr. Get access tokens.
+ * Verify credentials and redirect to based on response from Tumblr.
  */
 
 /* Start session and load lib */
 session_start();
-require_once('twitteroauth/twitteroauth.php');
+require_once('tumblroauth/tumblroauth.php');
 require_once('config.php');
 
 /* If the oauth_token is old redirect to the connect page. */
@@ -16,10 +16,10 @@ if (isset($_REQUEST['oauth_token']) && $_SESSION['oauth_token'] !== $_REQUEST['o
   header('Location: ./clearsessions.php');
 }
 
-/* Create TwitteroAuth object with app key/secret and token key/secret from default phase */
-$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+/* Create TumblroAuth object with app key/secret and token key/secret from default phase */
+$connection = new TumblrOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
 
-/* Request access tokens from twitter */
+/* Request access tokens from tumblr */
 $access_token = $connection->getAccessToken($_REQUEST['oauth_verifier']);
 
 /* Save the access tokens. Normally these would be saved in a database for future use. */

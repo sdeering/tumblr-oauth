@@ -8,5 +8,5 @@
 session_start();
 session_destroy();
  
-/* Redirect to page with the connect to Twitter option. */
+/* Redirect to page with the connect to Tumblr option. */
 header('Location: ./connect.php');
