@@ -1,9 +1,9 @@
 <?php
 
 /*
- * Abraham Williams (abraham@abrah.am) http://abrah.am
+ * Nick Quinlan (nicholasquinlan.com)
  *
- * The first PHP Library to support OAuth for Tumblr's REST API.
+ * Based on twitteroauth by Abraham https://github.com/abraham/twitteroauth
  */
 
 /* Load OAuth lib. You can find it at http://oauth.net */
@@ -18,21 +18,19 @@ class TumblrOAuth {
   /* Contains the last API call. */
   public $url;
   /* Set up the API root URL. */
-  public $host = "https://api.tumblr.com/1/";
+  public $host = "https://api.tumblr.com/v2/";
   /* Set timeout default. */
   public $timeout = 30;
   /* Set connect timeout. */
   public $connecttimeout = 30; 
   /* Verify SSL Cert. */
   public $ssl_verifypeer = FALSE;
-  /* Respons format. */
-  public $format = 'json';
   /* Decode returned json data. */
   public $decode_json = TRUE;
   /* Contains the last HTTP headers returned. */
   public $http_info;
   /* Set the useragnet. */
-  public $useragent = 'TumblrOAuth v0.2.0-beta2';
+  public $useragent = 'TumblrOAuth v0.1-beta2';
   /* Immediately retry the API call if the response was not successful. */
   //public $retry = TRUE;
 
@@ -42,10 +40,10 @@ class TumblrOAuth {
   /**
    * Set API URLS
    */
-  function accessTokenURL()  { return 'https://api.tumblr.com/oauth/access_token'; }
-  function authenticateURL() { return 'https://api.tumblr.com/oauth/authenticate'; }
-  function authorizeURL()    { return 'https://api.tumblr.com/oauth/authorize'; }
-  function requestTokenURL() { return 'https://api.tumblr.com/oauth/request_token'; }
+  function accessTokenURL()  { return 'http://www.tumblr.com/oauth/access_token'; }
+  function authenticateURL() { return 'http://www.tumblr.com/oauth/authorize'; }
+  function authorizeURL()    { return 'http://www.tumblr.com/oauth/authorize'; }
+  function requestTokenURL() { return 'http://www.tumblr.com/oauth/request_token'; }
 
   /**
    * Debug helpers
@@ -144,10 +142,7 @@ class TumblrOAuth {
    */
   function get($url, $parameters = array()) {
     $response = $this->oAuthRequest($url, 'GET', $parameters);
-    if ($this->format === 'json' && $this->decode_json) {
-      return json_decode($response);
-    }
-    return $response;
+    return json_decode($response);
   }
   
   /**
@@ -155,10 +150,7 @@ class TumblrOAuth {
    */
   function post($url, $parameters = array()) {
     $response = $this->oAuthRequest($url, 'POST', $parameters);
-    if ($this->format === 'json' && $this->decode_json) {
-      return json_decode($response);
-    }
-    return $response;
+    return json_decode($response);
   }
 
   /**
@@ -166,10 +158,7 @@ class TumblrOAuth {
    */
   function delete($url, $parameters = array()) {
     $response = $this->oAuthRequest($url, 'DELETE', $parameters);
-    if ($this->format === 'json' && $this->decode_json) {
-      return json_decode($response);
-    }
-    return $response;
+    return json_decode($response);
   }
 
   /**
@@ -177,7 +166,7 @@ class TumblrOAuth {
    */
   function oAuthRequest($url, $method, $parameters) {
     if (strrpos($url, 'https://') !== 0 && strrpos($url, 'http://') !== 0) {
-      $url = "{$this->host}{$url}.{$this->format}";
+      $url = "{$this->host}{$url}";
     }
     $request = OAuthRequest::from_consumer_and_token($this->consumer, $this->token, $method, $url, $parameters);
     $request->sign_request($this->sha1_method, $this->consumer, $this->token);
