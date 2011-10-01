@@ -23,10 +23,10 @@ class TumblrOAuth {
   public $timeout = 30;
   /* Set connect timeout. */
   public $connecttimeout = 30; 
-  /* Verify SSL Cert. */
-  public $ssl_verifypeer = FALSE;
   /* Decode returned json data. */
   public $decode_json = TRUE;
+ /* Decode json to associative array. */
+  public $json_assoc = FALSE;
   /* Contains the last HTTP headers returned. */
   public $http_info;
   /* Set the useragnet. */
@@ -142,15 +142,21 @@ class TumblrOAuth {
    */
   function get($url, $parameters = array()) {
     $response = $this->oAuthRequest($url, 'GET', $parameters);
-    return json_decode($response);
+    if ($this->decode_json) {
+      return json_decode($response,$this->json_assoc);
+    }
+    return $response;
   }
   
   /**
    * POST wrapper for oAuthRequest.
    */
-  function post($url, $parameters = array()) {
+  function post($url, $parameters = array()){
     $response = $this->oAuthRequest($url, 'POST', $parameters);
-    return json_decode($response);
+    if ($this->decode_json) {
+      return json_decode($response,$this->json_assoc);
+    }
+    return $response;
   }
 
   /**
@@ -158,7 +164,10 @@ class TumblrOAuth {
    */
   function delete($url, $parameters = array()) {
     $response = $this->oAuthRequest($url, 'DELETE', $parameters);
-    return json_decode($response);
+    if ($this->decode_json) {
+      return json_decode($response,$this->json_assoc);
+    }
+    return $response;
   }
 
   /**
