@@ -1,7 +1,7 @@
-Abraham Williams | abraham@poseurte.ch | http://abrah.am | @abraham
+A PHP wrapper for Tumblr's API.
 
-The first PHP library for working with Twitter's OAuth API.
+Documentation: http://github.com/nquinlan/Tumblr-OAuth/blob/master/DOCUMENTATION 
+Source: http://github.com/nquinlan/Tumblr-OAuth
+Tumblr (Sparse) Documentation: http://www.tumblr.com/docs/en/api/v2
 
-Documentation: http://wiki.github.com/abraham/twitteroauth/documentation 
-Source: http://github.com/abraham/twitteroauth
-Twitter: http://apiwiki.twitter.com
+Nicholas Quinlan | nick@nicholasquinlan.com | http://nicholasquinlan.com | @n_quinlan
