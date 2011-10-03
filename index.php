@@ -19,15 +19,25 @@ $access_token = $_SESSION['access_token'];
 /* Create a TumblrOauth object with consumer/user tokens. */
 $connection = new TumblrOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
 
-/* If method is set change API call made. Test is called by default. */
-$content = $connection->get('account/verify_credentials');
+/* Find User Info */
+$user_info = $connection->post('user/info');
+
+$content = $user_info;
 
 /* Some example calls */
-//$connection->get('users/show', array('screen_name' => 'abraham')));
-//$connection->post('statuses/update', array('status' => date(DATE_RFC822)));
-//$connection->post('statuses/destroy', array('id' => 5437877770));
-//$connection->post('friendships/create', array('id' => 9436992)));
-//$connection->post('friendships/destroy', array('id' => 9436992)));
+/* Find Primary Blog Hostname */
+/*
+foreach($user_info->response->user->blogs as $blog){
+	if($blog->primary === true){
+		break;
+	}
+}
+$hostname = parse_url($blog->url,PHP_URL_HOST);
+*/
+// $connection->get("blog/$hostname/info"); /* Not Yet Working */
+// $connection->post("blog/$hostname/post", array('type' => 'text', 'body' => 'Testing TumblrOAuth - ' . date(DATE_RFC822)));
+// $connection->post("user/follow", array('url' => 'http://nquinlan.tumblr.com/'));
+// $connection->post("user/unfollow", array('url' => 'http://nquinlan.tumblr.com/'));
 
 /* Include HTML to display on the page */
 include('html.inc');

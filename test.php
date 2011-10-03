@@ -19,15 +19,10 @@ $access_token = $_SESSION['access_token'];
 /* Create a TumblrOauth object with consumer/user tokens. */
 $connection = new TumblrOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
 
-/* If method is set change API call made. Test is called by default. */
-$content = $connection->get('account/rate_limit_status');
-echo "Current API hits remaining: {$content->remaining_hits}.";
-
-/* Get logged in user to help with tests. */
-$user = $connection->get('account/verify_credentials');
 
 $active = FALSE;
 if (empty($active) || empty($_GET['confirmed']) || $_GET['confirmed'] !== 'TRUE') {
+  echo '<h1>This page is not complete. Don\'t use it.</h1>';
   echo '<h1>Warning! This page will make many requests to Tumblr.</h1>';
   echo '<h3>Performing these test might max out your rate limit.</h3>';
   echo '<h3>Statuses/DMs will be created and deleted. Accounts will be un/followed.</h3>';
@@ -92,14 +87,6 @@ echo '</tr><tr>';
 echo '<th colspan="4">Response Snippet</th>';
 echo '</tr>';
 
-/**
- * Help Methods.
- */
-tumblroauth_header('Help Methods');
-
-/* help/test */
-tumblroauth_row('help/test', $connection->get('help/test'), $connection->http_code);
-
 
 /**
  * Timeline Methods.
@@ -132,7 +119,7 @@ tumblroauth_row('statuses/retweets_of_me', $connection->get('statuses/retweets_o
 
 
 /**
- * Status Methods.
+ * Post Methods.
  */
 tumblroauth_header('Status Methods');
 
