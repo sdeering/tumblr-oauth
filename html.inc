@@ -17,9 +17,8 @@
 
       <p>
         Links:
-        <a href='http://github.com/abraham/tumblroauth'>Source Code</a> &amp;
-        <a href='http://wiki.github.com/abraham/tumblroauth/documentation'>Documentation</a> |
-        Contact @<a href='http://tumblr.com/abraham'>abraham</a>
+        <a href='http://github.com/nquinlan/Tumblr-OAuth'>Source Code</a> |
+        Contact <a href='http://twitter.com/nquinlan'>@nquinlan</a>
       </p>
       <hr />
       <?php if (isset($menu)) { ?>
