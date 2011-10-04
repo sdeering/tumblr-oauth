@@ -143,6 +143,7 @@ h1+h2 {
   margin: 20px auto;
   font-size: 1em;
   text-align: center;
+  display: block;
 }
 /* =============================================================================
    Print styles.
