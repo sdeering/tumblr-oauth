@@ -1,6 +1,6 @@
 A PHP wrapper for Tumblr's API.
 
-** Addec support for composer
+** Added support for composer -Sam
 
 Documentation: http://github.com/nquinlan/Tumblr-OAuth/blob/master/DOCUMENTATION
 Source: http://github.com/nquinlan/Tumblr-OAuth
