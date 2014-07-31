@@ -1,6 +1,8 @@
 A PHP wrapper for Tumblr's API.
 
-** Added support for composer -Sam
+Sam 31/07/2014
+** Added support for composer
+** Added webhook to packagist
 
 Documentation: http://github.com/nquinlan/Tumblr-OAuth/blob/master/DOCUMENTATION
 Source: http://github.com/nquinlan/Tumblr-OAuth
