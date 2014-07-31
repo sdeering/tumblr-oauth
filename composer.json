@@ -1,0 +1,7 @@
+{
+    "name": "sdeering/Tumblr-Oauth",
+    "description": "A PHP Library to Support Tumblr OAuth",
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
